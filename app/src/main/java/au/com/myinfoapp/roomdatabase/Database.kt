@@ -5,21 +5,21 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [DatabaseEntity1::class], version = 1, exportSchema = false)
-abstract class localDatabase : RoomDatabase() {
+@Database(entities = [UserInfoTable::class], version = 1, exportSchema = false)
+abstract class LocalDatabase : RoomDatabase() {
 
-    abstract val DatabaseDao: DatabaseEntity1
+    abstract val DatabaseDao: DatabaseDao
     companion object {
         @Volatile
-        private var INSTANCE: localDatabase? = null
-        fun getInstance(context: Context): localDatabase {
+        private var INSTANCE: LocalDatabase? = null
+        fun getInstance(context: Context): LocalDatabase {
             synchronized(this) {
                 var instance = INSTANCE
 
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        localDatabase::class.java,
+                            LocalDatabase::class.java,
                         "user_info_database"
                     )
                         .fallbackToDestructiveMigration()

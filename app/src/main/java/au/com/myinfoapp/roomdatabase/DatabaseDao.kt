@@ -14,22 +14,22 @@ import androidx.room.Update
 interface DatabaseDao {
 
     @Insert
-    fun insert(user: DatabaseEntity1)
+    fun insert(user: UserInfoTable)
 
     @Update
-    fun update(user: DatabaseEntity1)
+    fun update(user: UserInfoTable)
 
     @Query("SELECT * from User_Info_Table WHERE Users_Name = :key")
-    fun get(key: Long): DatabaseEntity1?
+    fun get(key: Long): UserInfoTable?
 
     @Query("DELETE FROM User_Info_Table")
     fun clear()
 
     @Query("SELECT * FROM User_Info_Table ORDER BY Users_Name DESC LIMIT 1")
-    fun getUser(): DatabaseEntity1?
+    fun getUser(): UserInfoTable?
 
     @Query("SELECT * FROM User_Info_Table ORDER BY Users_Name DESC")
-    fun getAllUsers(): LiveData<List<DatabaseEntity1>>
+    fun getAllUsers(): LiveData<List<UserInfoTable>>
 
 
 

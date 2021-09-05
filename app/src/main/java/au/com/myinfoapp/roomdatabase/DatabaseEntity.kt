@@ -2,6 +2,7 @@ package au.com.myinfoapp.roomdatabase
 
 import android.provider.ContactsContract
 import androidx.room.ColumnInfo
+import androidx.room.Dao
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,8 +11,9 @@ import androidx.room.PrimaryKey
 // Essentially 'Entity' is a table.
 // Create new data classes for each table needed.
 
+
 @Entity(tableName = "User_Info_Table")
-data class DatabaseEntity1(
+data class UserInfoTable(
 
     @PrimaryKey(autoGenerate = true)
     var userID: Long = 0L,
