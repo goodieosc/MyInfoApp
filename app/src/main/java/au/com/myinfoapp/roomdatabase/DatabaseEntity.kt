@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Dao
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 
 //Configures the columns in a table.
@@ -29,7 +30,7 @@ data class UserInfoTable(
     var phoneNumber: Int,
 
     @ColumnInfo(name = "Date_Of_Birth")
-    var dateOfBirth: Int,
+    var dateOfBirth: String,
 
     @ColumnInfo(name = "Gender")
     var gender: String
