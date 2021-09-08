@@ -28,9 +28,11 @@ interface DatabaseDao {
     @Query("SELECT * FROM User_Info_Table ORDER BY Users_Name DESC LIMIT 1")
     fun getUser(): UserInfoTable?
 
-    @Query("SELECT * FROM User_Info_Table ORDER BY Users_Name DESC")
-    fun getAllUsers(): LiveData<List<UserInfoTable>>
+//    @Query("SELECT * FROM User_Info_Table ORDER BY Users_Name DESC")
+//    fun getAllUsers(): LiveData<List<UserInfoTable>>
 
+    @Query(value = "Select * from User_Info_Table")
+    fun getAllUsers() : List<UserInfoTable>
 
 
 }

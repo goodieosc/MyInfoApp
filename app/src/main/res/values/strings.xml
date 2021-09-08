@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MyInfoApp</string>
+    <string name="name_box">Name</string>
+    <string name="email_box">Email</string>
+    <string name="phone_box">Phone number</string>
+    <string name="dob_box">Date of birth</string>
+    <string name="gender_text">Gender</string>
+    <string name="male_radio_box">Male</string>
+    <string name="female_radio_box">Female</string>
+    <string name="query_button">Query</string>
+    <string name="save_button">Save</string>
 </resources>

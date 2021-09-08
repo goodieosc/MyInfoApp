@@ -6,17 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameBox"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:hint="Name"
+        android:layout_margin="50dp"
+        android:hint="@string/name_box"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:startIconContentDescription="Name"
         app:startIconDrawable="@drawable/ic_baseline_person_24">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -27,34 +27,36 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/emailBox"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginTop="8dp"
-        android:hint="Email"
+        android:hint="@string/email_box"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameBox"
-        app:startIconContentDescription="Name"
+        app:layout_constraintTop_toBottomOf="@id/nameBox"
         app:startIconDrawable="@drawable/ic_baseline_email_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/phoneBox"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginTop="8dp"
-        android:hint="Phone"
+        android:hint="@string/phone_box"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/emailBox"
-        app:startIconContentDescription="Name"
+        app:layout_constraintTop_toBottomOf="@id/emailBox"
         app:startIconDrawable="@drawable/ic_baseline_phone_24">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -65,18 +67,19 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/dobBox"
-        android:layout_width="300dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginTop="8dp"
         android:inputType="date"
-        android:hint="Date of birth"
+        android:hint="@string/dob_box"
         android:clickable="true"
         android:focusable="true"
         app:endIconMode="clear_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/phoneBox"
-        app:startIconContentDescription="Name"
+        app:layout_constraintTop_toBottomOf="@id/phoneBox"
         app:startIconDrawable="@drawable/ic_baseline_calendar_today_24">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -88,37 +91,49 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="@string/gender_text"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/genderRadioGroup"
+        app:layout_constraintStart_toStartOf="@id/dobBox"
+        app:layout_constraintTop_toTopOf="@id/genderRadioGroup" />
 
     <RadioGroup
         android:id="@+id/genderRadioGroup"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/dobBox"
-        app:layout_constraintTop_toBottomOf="@+id/dobBox">
+        app:layout_constraintEnd_toEndOf="@id/dobBox"
+        app:layout_constraintTop_toBottomOf="@id/dobBox">
 
         <RadioButton
             android:id="@+id/male"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Male" />
+            android:text="@string/male_radio_box" />
 
         <RadioButton
             android:id="@+id/female"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Female" />
+            android:text="@string/female_radio_box" />
     </RadioGroup>
 
 
 
     <Button
         android:id="@+id/savebutton"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:text="Save"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:text="@string/save_button"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,24 +141,15 @@
 
     <Button
         android:id="@+id/queryButton"
-        android:layout_width="100dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Query"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginRight="100dp"
+        android:text="@string/query_button"
         android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/savebutton"
+        app:layout_constraintBottom_toTopOf="@id/savebutton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:text="Gender"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/genderRadioGroup"
-        app:layout_constraintStart_toStartOf="@+id/dobBox"
-        app:layout_constraintTop_toTopOf="@+id/genderRadioGroup" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
