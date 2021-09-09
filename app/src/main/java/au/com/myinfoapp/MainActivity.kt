@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.room.*
+import au.com.myinfoapp.databinding.ActivityMainBinding
 import au.com.myinfoapp.roomdatabase.*
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
@@ -20,14 +21,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Configure view binding
+        //val binding = ActivityMainBinding.inflate(layoutInflater)
 
         //Create the Room database
         createDB()
 
-
-
         // reference thje view using findviewby id or view binding or databinding
-        findViewById<TextView>(R.id.dobBoxChooser).setOnClickListener {
+        dobBoxChooser.setOnClickListener() {
             val builder = MaterialDatePicker.Builder.datePicker()
             builder.setTitleText("Select date of birth")
 
@@ -48,17 +49,16 @@ class MainActivity : AppCompatActivity() {
                 // Create a date format, then a date object with our offset
                 val simpleFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
                 val date = Date(it + offsetFromUTC)
-                findViewById<TextView>(R.id.dobBox).setText((simpleFormat.format(date)))
+                dobBox.editText?.setText((simpleFormat.format(date)))
 
-
-        }
+            }
 
 
             //Save values to DB when save button is clicked.
             savebutton.setOnClickListener {
 
                 //Set variables to the values input into the boxes in the layout
-                var usersName = findViewById<TextView>(R.id.nameBox).text.toString()
+                var usersName = nameBox.editText.toString()
                 var usersEmail = findViewById<TextView>(R.id.emailBox).text.toString()
                 var usersPhone = findViewById<TextView>(R.id.phoneBox).text.toString()
                 var usersDob = findViewById<TextView>(R.id.dobBox).text.toString()
