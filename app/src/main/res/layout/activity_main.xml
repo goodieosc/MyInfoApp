@@ -141,13 +141,13 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/queryButton"
+        android:id="@+id/listUsersButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="100dp"
         android:layout_marginRight="100dp"
-        android:text="@string/query_button"
+        android:text="@string/list_users_button"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/savebutton"
         app:layout_constraintEnd_toEndOf="parent"

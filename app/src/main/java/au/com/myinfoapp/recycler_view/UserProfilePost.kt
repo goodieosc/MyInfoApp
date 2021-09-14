@@ -4,6 +4,8 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 data class UserProfilePost(
 
+    //var usersImage: String,
+
     var usersName: String,
 
     var usersEmail: String,
@@ -13,6 +15,8 @@ data class UserProfilePost(
     var usersDob: String,
 
     var gender: String
+
+//    var photo: ByteArray?
 
 
 ) {

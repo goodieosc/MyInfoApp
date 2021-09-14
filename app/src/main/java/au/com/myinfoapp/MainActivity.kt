@@ -1,11 +1,15 @@
 package au.com.myinfoapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.room.*
 import au.com.myinfoapp.databinding.ActivityMainBinding
+import au.com.myinfoapp.recycler_view.UserProfilePost
 import au.com.myinfoapp.roomdatabase.*
 import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.DateValidatorPointForward
@@ -14,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
@@ -58,19 +63,28 @@ class MainActivity : AppCompatActivity() {
             savebutton.setOnClickListener {
 
                 //Set variables to the values input into the boxes in the layout
-                var usersName = nameBox.editText.toString()
-                var usersEmail = findViewById<TextView>(R.id.emailBox).text.toString()
-                var usersPhone = findViewById<TextView>(R.id.phoneBox).text.toString()
-                var usersDob = findViewById<TextView>(R.id.dobBox).text.toString()
+                var usersName = nameBox.editText?.text.toString()
+                var usersEmail = emailBox.editText?.text.toString()
+                var usersPhone = phoneBox.editText?.text.toString()
+                var usersDob = dobBox.editText?.text.toString()
                 var gender = if (male.isChecked) "Male" else "Female"
 
                 //Add user details into database
                 addDbEntry(usersName, usersEmail, usersPhone.toInt(), usersDob, gender)
             }
 
-            //Query DB when query button is clicked
-            queryButton.setOnClickListener { queryAllDbEntries() }
 
+            //Query and log all DB entries and then move to the UserListActivity
+            listUsersButton.setOnClickListener {
+                queryAllDbEntries()
+                try {
+                    val intent = Intent(this, UserListActivity::class.java)
+                    startActivity(intent)
+                } catch(ex:Exception){
+                    Log.e("Log", "Intent failure", ex)
+                }
+
+            }
 
         }
     }
@@ -81,7 +95,7 @@ class MainActivity : AppCompatActivity() {
     //Function to create room database
     fun createDB() {
 
-        val db: LocalDatabase = Room.inMemoryDatabaseBuilder(this, LocalDatabase::class.java)
+        val db: LocalDatabase = Room.inMemoryDatabaseBuilder(applicationContext, LocalDatabase::class.java)
                 .allowMainThreadQueries()
                 .build()
         dao = db.DatabaseDao
@@ -109,12 +123,27 @@ class MainActivity : AppCompatActivity() {
 
 
     //Function to list all entries in table
-    fun queryAllDbEntries() {
+    fun queryAllDbEntries() :ArrayList<UserProfilePost> {
         val usersList = dao.getAllUsers().listIterator()
+
+        val list = ArrayList<UserProfilePost>()
 
         for (i in usersList) {
             Log.e("Users in Room DB", i.toString())  //To export a particular column use i.columnId.toSting()
+
+            list.add(
+                    UserProfilePost(
+                            i.usersName,
+                            i.emailAddress,
+                            i.phoneNumber.toString(),
+                            i.dateOfBirth,
+                            i.gender
+                            //i.photo
+                    )
+            )
+
         }
+        return list
 
     }
 }

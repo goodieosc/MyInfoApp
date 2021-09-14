@@ -35,5 +35,8 @@ data class UserInfoTable(
     @ColumnInfo(name = "Gender")
     var gender: String
 
+//    @ColumnInfo(name = "Photo", typeAffinity = ColumnInfo.BLOB)
+//    var photo: ByteArray? = null
+
 
 )
